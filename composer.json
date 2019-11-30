@@ -1,0 +1,40 @@
+{
+    "name": "scriptburn/countrydb",
+    "type": "project",
+    "description": "scriptburn/countrydb",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "authors": [
+    {
+        "name": "Rajneesh ojha",
+        "email": "rajneeshojha123@gmail.com",
+        "homepage": "https://scriptburn.com",
+        "role": "Developer"
+    }],
+    "require":
+    {
+    },
+    "autoload":
+    {
+        "classmap": [
+            "src/"
+          
+        ]
+    },
+    "extra":
+    {
+
+        "laravel":
+        {
+            "providers": [
+                "Scriptburn\\CountryDb\\Providers\\CountryDb"
+            ],
+            "aliases":
+            {
+                "CountryDb": "Scriptburn\\CountryDb\\Facade\\CountryDb"
+            }
+        }
+    }
+}
