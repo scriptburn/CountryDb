@@ -12,9 +12,9 @@ class CreateCountriesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('countries', function (Blueprint $table)
+		if (!@Schema::hasTable('countries'))
 		{
-			if (!@Schema::hasTable('countries'))
+			Schema::create('countries', function (Blueprint $table)
 			{
 				$table->bigIncrements('id');
 				$table->string('name', 100);
@@ -26,8 +26,8 @@ class CreateCountriesTable extends Migration
 				$table->timestamps();
 				$table->boolean('flag')->default(1);
 				$table->string('wikiDataId')->nullable()->comment('Rapid API GeoDB Cities');
-			}
-		});
+			});
+		}
 	}
 
 	/**

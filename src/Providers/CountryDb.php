@@ -14,10 +14,9 @@ class CountryDb extends ServiceProvider
 		$this->map();
 		if (file_exists(__DIR__.'/../database/migrations'))
 		{
-			 
 			$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 		}
-		$this->app->register(SeedServiceProvider::class);
+		//$this->app->register(SeedServiceProvider::class);
 	}
 
 	public function register()

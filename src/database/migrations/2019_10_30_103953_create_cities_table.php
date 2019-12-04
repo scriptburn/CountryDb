@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Artisan;
 
 class CreateCitiesTable extends Migration
 {
@@ -12,9 +13,10 @@ class CreateCitiesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('cities', function (Blueprint $table)
+		\Log::info("seeding cities");
+		if (!@Schema::hasTable('cities'))
 		{
-			if (!@Schema::hasTable('cities'))
+			Schema::create('cities', function (Blueprint $table)
 			{
 				$table->bigIncrements('id');
 				$table->string('name');
@@ -31,8 +33,10 @@ class CreateCitiesTable extends Migration
 
 				$table->foreign('state_id', 'cities_ibfk_1')->references('id')->on('states')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 				$table->foreign('country_id', 'cities_ibfk_2')->references('id')->on('countries')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			}
-		});
+			});
+
+			Artisan::call('db:seed', ['--class' => 'Scriptburn\CountryDb\Database\Seeds\DatabaseSeeder', '--force' => '']);
+		}
 	}
 
 	/**

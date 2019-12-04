@@ -12,9 +12,9 @@ class CreateStatesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('states', function (Blueprint $table)
+		if (!@Schema::hasTable('states'))
 		{
-			if (!@Schema::hasTable('states'))
+			Schema::create('states', function (Blueprint $table)
 			{
 				$table->bigIncrements('id');
 				$table->string('name');
@@ -27,8 +27,8 @@ class CreateStatesTable extends Migration
 				$table->string('wikiDataId')->nullable()->comment('Rapid API GeoDB Cities');
 
 				$table->foreign('country_id', 'country_region_final')->references('id')->on('countries')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			}
-		});
+			});
+		}
 	}
 
 	/**

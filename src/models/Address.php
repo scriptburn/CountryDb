@@ -4,10 +4,11 @@ namespace Scriptburn\CountryDb\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Scriptburn\ElequentUuid\Traits\UuidModel;
-
+use Wildside\Userstamps\Userstamps;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Address extends Model
 {
-	use UuidModel;
+	use Userstamps,SoftDeletes,UuidModel;
 	/**
 	 * @var array
 	 */
