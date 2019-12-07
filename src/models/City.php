@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
+
+
+    /**
+     * The name of the "updated at" column.
+     *
+     * @var string
+     */
+    const UPDATED_AT = 'updated_on';
 	/**
 	 * @var array
 	 */

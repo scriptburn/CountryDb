@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Artisan;
 
 class CreateCitiesTable extends Migration
 {
@@ -35,7 +34,7 @@ class CreateCitiesTable extends Migration
 				$table->foreign('country_id', 'cities_ibfk_2')->references('id')->on('countries')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			});
 
-			Artisan::call('db:seed', ['--class' => 'Scriptburn\CountryDb\Database\Seeds\DatabaseSeeder', '--force' => '']);
+			 //Artisan::call('db:seed', ['--class' => 'Scriptburn\CountryDb\Database\Seeds\DatabaseSeeder', '--force' => '']);
 		}
 	}
 
