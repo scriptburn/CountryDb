@@ -3,8 +3,9 @@
 namespace Scriptburn\CountryDb\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Scriptburn\CharityVoting\Models\BaseModel;
 
-class Country extends Model
+class Country extends BaseModel
 {
 	/**
 	 * @var array

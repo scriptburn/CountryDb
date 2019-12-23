@@ -20,6 +20,8 @@ class CreateAddressesTable extends Migration
 				$table->bigIncrements('id');
 				$table->uuid('uuid');
 
+				$table->unsignedBigInteger('addressable_id')->nullable();
+				$table->string('addressable_type')->nullable();
 				$table->unsignedBigInteger('country_id');
 				$table->unsignedBigInteger('state_id');
 				$table->unsignedBigInteger('city_id');

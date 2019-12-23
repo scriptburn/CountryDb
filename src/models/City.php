@@ -2,22 +2,20 @@
 
 namespace Scriptburn\CountryDb\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Scriptburn\CharityVoting\Models\BaseModel;
 
-class City extends Model
+class City extends BaseModel
 {
-
-
-    /**
-     * The name of the "updated at" column.
-     *
-     * @var string
-     */
-    const UPDATED_AT = 'updated_on';
+	/**
+	 * The name of the "updated at" column.
+	 *
+	 * @var string
+	 */
+	const UPDATED_AT = 'updated_on';
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['name','state_id','state_code', 'country_id','country_code' ,  'latitude', 'longitude','flag','wikiDataId' ];
+	protected $fillable = ['name', 'state_id', 'state_code', 'country_id', 'country_code', 'latitude', 'longitude', 'flag', 'wikiDataId'];
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -35,6 +33,4 @@ class City extends Model
 		return $this->belongsTo(State::class);
 	}
 
-	 
 }
- 

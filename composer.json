@@ -14,13 +14,12 @@
         "role": "Developer"
     }],
     "require":
-    {
-    },
+    {},
     "autoload":
     {
         "classmap": [
             "src/"
-          
+
         ]
     },
     "extra":

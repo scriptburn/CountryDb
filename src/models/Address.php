@@ -2,21 +2,27 @@
 
 namespace Scriptburn\CountryDb\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Scriptburn\CharityVoting\Models\BaseModel;
 use Scriptburn\ElequentUuid\Traits\UuidModel;
 use Wildside\Userstamps\Userstamps;
-use Illuminate\Database\Eloquent\SoftDeletes;
-class Address extends Model
+
+class Address extends BaseModel
 {
-	use Userstamps,SoftDeletes,UuidModel;
+	use Userstamps, SoftDeletes, UuidModel;
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['id', 'state_id', 'country_id', 'city_id', 'latitude', 'longitude', 'landmark', 'address', 'zip'];
+	protected $fillable = ['state_id', 'country_id', 'city_id', 'latitude', 'longitude', 'landmark', 'address', 'zip'];
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
+	public function getRouteKeyName()
+	{
+		return 'uuid';
+	}
+	public function resolveRouteBinding($value)
+	{
+		return $this->uuid($value,false)->with(['country:id,name', 'state:id,name', 'city:id,name'])->first() ?? abort(404);
+	}
 	public function country()
 	{
 		return $this->belongsTo(Country::Class);
@@ -35,5 +41,9 @@ class Address extends Model
 	public function city()
 	{
 		return $this->belongsTo(City::class);
+	}
+	public function addressable()
+	{
+		return $this->morphTo();
 	}
 }

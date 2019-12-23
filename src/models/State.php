@@ -1,9 +1,9 @@
 <?php
 namespace Scriptburn\CountryDb\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Scriptburn\CharityVoting\Models\BaseModel;
 
-class State extends Model
+class State extends BaseModel
 {
 	/**
 	 * @var array
